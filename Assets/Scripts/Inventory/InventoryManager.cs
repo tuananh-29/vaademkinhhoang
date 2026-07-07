@@ -26,6 +26,7 @@ public class InventoryManager : MonoBehaviour
 {
     [Header("Tham chiếu")]
     [SerializeField] private FlashlightController flashlightController;
+    [SerializeField] private GameObject flashlightHandModel; // Model đèn pin hiện trên tay (child của Camera)
 
     [Header("Phím tắt")]
     [SerializeField] private KeyCode useItemKey = KeyCode.F;
@@ -87,6 +88,13 @@ public class InventoryManager : MonoBehaviour
 
         // Tự động chọn vật phẩm đầu tiên nếu chưa chọn gì
         if (selectedIndex < 0) selectedIndex = slots.Count - 1;
+
+        // Nhặt được đèn pin lần đầu -> hiện model đèn pin trên tay ngay
+        // (đèn vẫn TẮT cho đến khi người chơi chọn + bấm F để bật)
+        if (itemData.itemType == ItemType.Flashlight && flashlightHandModel != null)
+        {
+            flashlightHandModel.SetActive(true);
+        }
 
         OnInventoryChanged?.Invoke();
     }

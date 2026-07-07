@@ -1,17 +1,16 @@
 using System.Text;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 /// <summary>
-/// Hiển thị túi đồ dạng danh sách text đơn giản.
-/// Gắn script này vào 1 GameObject UI có component Text (UI → Legacy → Text),
-/// hoặc kéo Text đó vào field bên dưới.
+/// Hiển thị túi đồ dạng danh sách text đơn giản (dùng TextMeshPro).
+/// Gắn script này vào 1 GameObject UI, kéo các Text (TMP) tương ứng vào field bên dưới.
 /// </summary>
 public class InventoryUI : MonoBehaviour
 {
     [SerializeField] private InventoryManager inventoryManager;
-    [SerializeField] private Text inventoryText;   // Text hiển thị danh sách vật phẩm
-    [SerializeField] private Text promptText;      // Text hiển thị "Nhấn E để nhặt..."
+    [SerializeField] private TMP_Text inventoryText;   // Text hiển thị danh sách vật phẩm
+    [SerializeField] private TMP_Text promptText;      // Text hiển thị "Nhấn E để nhặt..."
     [SerializeField] private PlayerInteractor playerInteractor; // Để đọc CurrentPrompt
 
     [SerializeField] private GameObject inventoryPanel; // Panel chứa toàn bộ UI túi đồ (ẩn/hiện theo Tab)
